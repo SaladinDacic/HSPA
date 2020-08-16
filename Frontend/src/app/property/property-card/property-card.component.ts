@@ -1,4 +1,6 @@
+import { IProperty } from './../Iproperty.interface';
 import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component(
   {
@@ -11,7 +13,7 @@ import { Component, Input } from '@angular/core';
   }
 )
 export class PropertyCardComponent{
-  @Input() property : any
+  @Input() property: IProperty
 
   /* Property: any = {
     "Id": 1,

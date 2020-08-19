@@ -1,6 +1,7 @@
 <div class="card">
   <div class="card-img-wrapper">
-    <img src="../../../assets/images/HouseClipArt1.png" class="card-img-top" alt="...">
+    <img *ngIf="property.Image" src="../../../assets/images/{{property.Image}}.png" class="card-img-top" alt="...">
+    <img *ngIf="!property.Image" src="../../../assets/images/prop-0.png" class="card-img-top" alt="...">
     <ul class="animate member-icon list-inline text-center">
       <li class="list-inline-item">
         <button type="button" class="btn btn-success"><i class="fas fa-marker"></i> Edit</button>
@@ -14,6 +15,7 @@
     <h1>{{property.Name}}</h1>
     <h1>{{property.Type}}</h1>
     <h1>{{property.Price}}</h1>
+    <h1>{{property.SellRent}}</h1>
   </div>
 </div>
 

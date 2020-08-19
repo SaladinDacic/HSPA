@@ -2,4 +2,16 @@
 <p>
   Property id here is {{propertyId}}
 </p>
-<button routerLink="/" >go back</button>
+<br>
+
+<button class="btn btn-primary" (click)="onSelectNext()" >go to next page</button>
+<br>
+
+<button class="btn btn-info" routerLink="/property-detail/1" >Page 1</button>
+<button class="btn btn-info" routerLink="/property-detail/2" >Page 2</button>
+<button class="btn btn-info" routerLink="/property-detail/3" >Page 3</button>
+<button class="btn btn-info" [routerLink]="['/property-detail',4]" >Page 4</button>
+
+<hr>
+
+<button class="btn btn-info" routerLink="/" >go back</button>

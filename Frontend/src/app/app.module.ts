@@ -1,3 +1,4 @@
+import { UserServiceService } from './services/user-service.service';
 import { HousingService } from './services/housing.service';
 import { PropertyCardComponent } from './property/property-card/property-card.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    HousingService
+    HousingService,
+    UserServiceService
   ],
   bootstrap: [AppComponent]
 })

@@ -9,7 +9,7 @@
         <div class="form-group col-12">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" formControlName="userName">
-            <span class="error-block" *ngIf="!userName.valid && registrationForm.get('userName').touched">
+            <span class="error-block" *ngIf="!userName.valid && registrationForm.get('userName').touched || userSubmitted">
               Please enter your name
             </span>
         </div>
@@ -17,7 +17,7 @@
         <div class="form-group col-12">
           <label for="email" class="form-label">Email</label>
           <input type="text" class="form-control" formControlName="email">
-          <span *ngIf="!email.valid && email.touched">
+          <span *ngIf="!email.valid && email.touched || userSubmitted">
             <span class="error-block" *ngIf="email.hasError('required')">
               Please enter Email
             </span>
@@ -30,11 +30,11 @@
         <div class="form-group col-12">
           <label for="passwrod" class="form-label">Password</label>
           <input type="password" class="form-control" formControlName="password">
-          <span  *ngIf="!password.valid && password.touched">
+          <span  *ngIf="!password.valid && password.touched || userSubmitted">
             <span class="error-block" *ngIf="password.hasError('required')">
               Please enter password
             </span>
-            <span class="error-block" *ngIf="password.errors.minlength">
+            <span class="error-block" *ngIf="password.hasError('minlength')">
               Please enter must contain at least 8 carracters
             </span>
           </span>
@@ -43,12 +43,12 @@
         <div class="form-group col-12">
           <label for="cpassword" class="form-label">Confirm Password</label>
           <input type="password" class="form-control" formControlName="confirmPassword">
-          <span *ngIf="!confirmPassword.valid && confirmPassword.touched">
+          <span *ngIf="!confirmPassword.valid && confirmPassword.touched || userSubmitted">
             <span class="error-block" *ngIf="confirmPassword.hasError('required')">
               Please enter password again
             </span>
           </span>
-              <span class="error-block" *ngIf="registrationForm.hasError('notMatched') && confirmPassword.valid && password.hasError('required')">
+              <span class="error-block" *ngIf="registrationForm.hasError('notMatched') && confirmPassword.valid">
                 Please enter same password as above
               </span>
         </div>
@@ -56,8 +56,8 @@
         <div class="form-group col-12">
           <label for="mobile" class="form-label">Mobile</label>
           <input type="text" class="form-control" formControlName="mobile">
-          <span  *ngIf="!mobile.valid && mobile.touched">
-            <span class="error-block" *ngIf="mobile.errors.required">
+          <span  *ngIf="!mobile.valid && mobile.touched || userSubmitted">
+            <span class="error-block" *ngIf="mobile.hasError('required')">
               Please enter your phone number
             </span>
             <span class="error-block" *ngIf="mobile.hasError('minlength')">
@@ -70,8 +70,8 @@
           <button type="submit" class="btn btn-primary">Save</button>
           <button type="reset" class="btn btn-secondary ml-2">Cancel</button>
         </div>
-        FormValue : {{registrationForm.value | json}} <br>
-        FormStatus: {{registrationForm.valid}}
+        <!-- FormValue : {{registrationForm.value | json}} <br>
+        FormStatus: {{registrationForm.valid}} -->
       </form>
     </div>
   </div>

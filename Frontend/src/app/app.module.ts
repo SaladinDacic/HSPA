@@ -1,3 +1,4 @@
+import { AlertifyService } from './services/alertify.service';
 import { UserServiceService } from './services/user-service.service';
 import { HousingService } from './services/housing.service';
 import { PropertyCardComponent } from './property/property-card/property-card.component';
@@ -45,7 +46,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     HousingService,
-    UserServiceService
+    UserServiceService,
+    AlertifyService
   ],
   bootstrap: [AppComponent]
 })

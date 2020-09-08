@@ -1,4 +1,4 @@
-import { IProperty } from './../Iproperty.interface';
+import { IPropertyBase } from './../../model/IPropertyBase';
 import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -13,7 +13,8 @@ import { Observable } from 'rxjs';
   }
 )
 export class PropertyCardComponent{
-  @Input() property: IProperty
+  @Input() property: IPropertyBase
+  @Input() hideIcons: Boolean
 
   /* Property: any = {
     "Id": 1,

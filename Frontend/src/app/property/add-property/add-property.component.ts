@@ -1,4 +1,4 @@
-import { IProperty } from './../Iproperty.interface';
+import { IPropertyBase } from './../../model/IPropertyBase';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
@@ -19,12 +19,17 @@ export class AddPropertyComponent implements OnInit {
   furnishTypes: Array<string> = ['Fully', 'Semi', 'Unfurnished']
   readyToMove: Array<string> = ['East', 'West', 'South', 'North']
 
-  propertyView: IProperty = {
+  propertyView: IPropertyBase = {
     Id: null,
     SellRent: null,
     Name: null,
-    Type: null,
-    Price: null
+    PType: null,
+    FType: null,
+    Price: null,
+    BHK: null,
+    BuiltArea: null,
+    City: null,
+    RTM: null
   };
 
   constructor(public router: Router) { }
@@ -35,6 +40,7 @@ export class AddPropertyComponent implements OnInit {
   onSubmit() {
     console.log("Congrats, form submitted");
     console.log(this.addPropertyForm);
+
   }
 
   selectTab(tabId: number) {

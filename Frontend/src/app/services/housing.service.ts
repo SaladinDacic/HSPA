@@ -1,3 +1,4 @@
+import { Property } from './../model/property';
 import { IPropertyBase } from './../model/IPropertyBase';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -23,5 +24,9 @@ export class HousingService {
         return propertiesArray;
       })
     )
+  }
+
+  addProperty(property: Property){
+    localStorage.setItem('newProp', JSON.stringify(property));
   }
 }

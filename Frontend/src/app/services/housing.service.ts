@@ -19,9 +19,9 @@ export class HousingService {
       const localProperties = JSON.parse(localStorage.getItem('newProp'));
 
       if (localProperties) {
-        for (const id in localProperties) {
-          if (localProperties.hasOwnProperty(id) && localProperties[id].SellRent === SellRent) {
-            propertiesArray.push(localProperties[id]);
+        for (const Id in localProperties) {
+          if (localProperties.hasOwnProperty(Id) && localProperties[Id].SellRent == SellRent) {
+            propertiesArray.push(localProperties[Id]);
           }
         }
       }

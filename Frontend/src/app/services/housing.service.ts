@@ -12,7 +12,19 @@ export class HousingService {
 
   constructor(private http:HttpClient) { }
 
-  getAllProperties(SellRent: number): Observable<IPropertyBase[]> {
+
+  getProperty(id: number){
+    //pipe znači manipuliraj sa data koje se dobiju iz methoda
+    //i onda mapaš taj data u obliku koji želiš a prvo tom data daš ime u ovom slučaju propertiesArray
+    return this.getAllProperties().pipe(
+      map(propertiesArray =>{
+        return propertiesArray.find(p => p.Id == id);
+      })
+    )
+  }
+
+
+  getAllProperties(SellRent?: number): Observable<IPropertyBase[]> {
     return this.http.get('data/properties.json').pipe(
       map(data => {
       const propertiesArray: Array<IPropertyBase> = [];
@@ -20,14 +32,22 @@ export class HousingService {
 
       if (localProperties) {
         for (const Id in localProperties) {
-          if (localProperties.hasOwnProperty(Id) && localProperties[Id].SellRent == SellRent) {
+          if(SellRent){
+            if (localProperties.hasOwnProperty(Id) && localProperties[Id].SellRent == SellRent) {
+              propertiesArray.push(localProperties[Id]);
+            }
+          }else{
             propertiesArray.push(localProperties[Id]);
           }
         }
       }
 
       for (const id in data) {
-        if (data.hasOwnProperty(id) && data[id].SellRent === SellRent) {
+        if(SellRent){
+          if (data.hasOwnProperty(id) && data[id].SellRent === SellRent) {
+            propertiesArray.push(data[id]);
+          }
+        }else{
           propertiesArray.push(data[id]);
         }
       }

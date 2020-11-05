@@ -13,6 +13,10 @@ export class HousingService {
   constructor(private http:HttpClient) { }
 
 
+  getAllCities() : Observable<string[]> {
+    return this.http.get<string[]>('http://localhost:5000/api/city/');
+  }
+
   getProperty(id: number){
     //pipe znači manipuliraj sa data koje se dobiju iz methoda
     //i onda mapaš taj data u obliku koji želiš a prvo tom data daš ime u ovom slučaju propertiesArray

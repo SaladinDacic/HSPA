@@ -7,15 +7,19 @@ export class FilterPipe implements PipeTransform {
 
   transform(value: any[], filterString: string, propName: string): any[] {
     const resultArray = [];
-    if(value.length === 0 || filterString ==="" || propName ===""){
-      return value;
-    }
+    if(value){
+      if(value.length === 0 || filterString ==="" || propName ===""){
+        return value;
+      }
 
-    for(const item of value){
-      if((item[propName]).toUpperCase() === filterString.toUpperCase()){
-        resultArray.push(item);
+
+      for(const item of value){
+        if((item[propName]).toUpperCase() === filterString.toUpperCase()){
+          resultArray.push(item);
+        }
       }
     }
+
 
     return resultArray;
   }
